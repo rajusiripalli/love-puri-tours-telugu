@@ -739,3 +739,217 @@ footer {
     font-size: 11px;
   }
 }
+
+
+
+/* ==================================
+   LOVE PURI MINI FLOATING ORBIT
+================================== */
+
+.lp-floating-orbit{
+  position:fixed;
+  right:12px;
+  bottom:18px;
+  z-index:9999;
+
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  padding:6px 8px;
+
+  border-radius:999px;
+
+  background:
+  linear-gradient(
+    135deg,
+    rgba(108,61,200,.25),
+    rgba(224,64,160,.15)
+  );
+
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+
+  border:1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    0 8px 25px rgba(108,61,200,.18),
+    0 4px 12px rgba(224,64,160,.10),
+    inset 0 1px 1px rgba(255,255,255,.15);
+
+  overflow:hidden;
+}
+
+.lp-floating-orbit::before{
+  content:'';
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    135deg,
+    rgba(255,255,255,.10),
+    transparent 50%
+  );
+
+  pointer-events:none;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+.lp-orbit-btn{
+  width:34px;
+  height:34px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+  color:#fff;
+
+  position:relative;
+  overflow:hidden;
+
+  transition:.3s ease;
+}
+
+.lp-orbit-btn svg{
+  width:14px;
+  height:14px;
+
+  position:relative;
+  z-index:2;
+}
+
+/* =====================
+   CALL BUTTON
+===================== */
+
+.lp-call-orbit{
+  background:
+  linear-gradient(
+    135deg,
+    #18d860,
+    #0bb14a
+  );
+
+  box-shadow:
+    0 4px 12px rgba(22,212,95,.30),
+    inset 0 1px 1px rgba(255,255,255,.25);
+}
+
+/* =====================
+   WHATSAPP BUTTON
+===================== */
+
+.lp-whatsapp-orbit{
+  background:
+  linear-gradient(
+    135deg,
+    #25D366,
+    #128C7E
+  );
+
+  box-shadow:
+    0 4px 12px rgba(37,211,102,.30),
+    inset 0 1px 1px rgba(255,255,255,.25);
+}
+
+.lp-whatsapp-orbit svg{
+  width:13px;
+  height:13px;
+}
+
+/* =====================
+   HOVER EFFECT
+===================== */
+
+.lp-orbit-btn:hover{
+  transform:translateY(-2px) scale(1.04);
+}
+
+.lp-orbit-btn::before{
+  content:'';
+  position:absolute;
+
+  width:140%;
+  height:140%;
+
+  top:-120%;
+  left:-120%;
+
+  background:
+  linear-gradient(
+    135deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+
+  transition:.8s;
+}
+
+.lp-orbit-btn:hover::before{
+  top:-20%;
+  left:-20%;
+}
+
+/* =====================
+   GLOW
+===================== */
+
+.lp-call-orbit::after,
+.lp-whatsapp-orbit::after{
+  content:'';
+  position:absolute;
+  inset:-3px;
+
+  border-radius:50%;
+
+  z-index:-1;
+  opacity:.35;
+  filter:blur(8px);
+}
+
+.lp-call-orbit::after{
+  background:#18d860;
+}
+
+.lp-whatsapp-orbit::after{
+  background:#25D366;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media(max-width:768px){
+
+  .lp-floating-orbit{
+    right:10px;
+    bottom:16px;
+    gap:5px;
+    padding:5px 7px;
+  }
+
+  .lp-orbit-btn{
+    width:32px;
+    height:32px;
+  }
+
+  .lp-orbit-btn svg{
+    width:13px;
+    height:13px;
+  }
+
+  .lp-whatsapp-orbit svg{
+    width:12px;
+    height:12px;
+  }
+
+}

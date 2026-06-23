@@ -1,0 +1,741 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Telugu&family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #0f1225 0%, #1e2548 100%);
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-card: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: blur(15px); /* Optimized from 20px for faster mobile performance */
+  
+  --ios-green: #34C759;
+  --ios-green-dark: #248A3D;
+  --accent-gold: #FFD580;
+  --text-main: #FFFFFF;
+  --text-muted: #A8B0D8;
+  --sf-orange: #FF453A;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: var(--primary-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* PREMIUM IOS BLURRED NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 18, 37, 0.8);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  height: auto;
+}
+.nav-logo {
+  font-family: 'Tiro Telugu', serif;
+  color: var(--accent-gold);
+  font-size: 1.20rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 6px 0;
+}
+.nav-logo small {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.nav-wa {
+  background: var(--ios-green);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.nav-wa:active {
+  transform: scale(0.95);
+}
+
+/* STICKY WA BAR */
+.sticky-wa {
+  background: rgba(52, 199, 89, 0.2);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid rgba(52, 199, 89, 0.3);
+  padding: 10px 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sticky-wa span {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+.sticky-wa-btn {
+  background: var(--ios-green);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 10px rgba(52, 199, 89, 0.2);
+}
+
+/* HERO SECTION WITH PURI BEACH BACKGROUND */
+.hero {
+  position: relative;
+  padding: 5rem 1.5rem 4rem;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(15, 18, 37, 0.65),
+      rgba(15, 18, 37, 0.80)
+    ),
+    url('assets/img/puri-tourism.webp');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-eyebrow {
+  background: rgba(255, 213, 128, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(255, 213, 128, 0.25);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+.hero h1 {
+  font-family: 'Tiro Telugu', serif;
+  color: #ffffff;
+  font-size: 2.5rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+.hero h1 em {
+  color: var(--accent-gold);
+  font-style: normal;
+  text-shadow: 0 0 15px rgba(255, 213, 128, 0.3);
+}
+.hero-sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 550px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+/* HARDWARE ACCELERATED HERO BOX - FIXES MOBILE LOADING LAG */
+.hero-wa-box {
+  background: rgba(25, 30, 59, 0.65); /* Solid dark fallback background for instant render */
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  max-width: 460px;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  
+  /* Forces Mobile Browser GPU Acceleration to fix the reload/freeze bug */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+.hero-wa-box p {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+.wa-main-btn {
+  width: 100%;
+  background: var(--ios-green);
+  color: #fff;
+  padding: 15px 16px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(52, 199, 89, 0.4);
+  transition: transform 0.2s;
+  line-height: 1.3; /* Fixes multi-line text overlapping */
+}
+.wa-main-btn:active { transform: scale(0.98); }
+
+.wa-prefill {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: left;
+  font-style: italic;
+  margin: 1rem 0;
+  border: 1px solid rgba(255,255,255,0.05);
+  line-height: 1.5;
+}
+.call-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 13px;
+  border-radius: 16px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* TRUST BAR */
+.trust {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* SECTIONS SETUP */
+.sec {
+  padding: 4rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sec-label {
+  color: var(--accent-gold);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.sec-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+/* ==========================================
+   APPROVED SERVICE CARDS GRID (FIXED STRUCTURE)
+   ========================================== */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  justify-items: center;
+}
+
+.svc-card {
+  background: var(--glass-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 340px;
+  min-height: 420px; /* కార్డ్స్ అన్నీ ఒకే హైట్‌లో ఉండటానికి మ్యాండేటరీ బేస్ */
+}
+
+.svc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* IMAGE FRAME - ఇమేజ్ లోడ్ కాకపోయినా ఈ స్ట్రక్చర్ అస్సలు కదలదు */
+.svc-img-frame {
+  width: 100%;
+  height: 160px; /* ఫిక్స్‌డ్ హైట్ - ఎప్పటికీ మారదు */
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.05); /* ఇమేజ్ రాకపోతే వచ్చే ఫాల్‌బ్యాక్ కలర్ */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ఇమేజ్ లేనప్పుడు బ్యాక్‌గ్రౌండ్‌లో కనిపించే ప్లేస్‌హోల్డర్ ఐకాన్ (ప్యాసింజర్/ట్రావెల్ సింబల్) */
+.svc-img-frame::before {
+  content: '🌴'; 
+  font-size: 2.5rem;
+  opacity: 0.15;
+  position: absolute;
+  z-index: 1;
+}
+
+/* ఒకవేళ HTML లో <img> ట్యాగ్ వాడితే అది స్ట్రక్చర్‌ని పాడు చేయకుండా ఫిక్స్ చేసే రూల్ */
+.svc-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.svc-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(20,24,47,0.95));
+  z-index: 3;
+}
+
+.svc-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  z-index: 4;
+}
+
+.svc-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.75rem;
+}
+
+.svc-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.svc-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1; 
+}
+
+.svc-prefill {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+.svc-wa {
+  width: 100%;
+  background: var(--ios-green);
+  color: #fff;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto; 
+  text-decoration: none;
+}
+
+/* TOUR PACKAGES */
+.pkg-bg {
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+.pkg-card {
+  background: var(--glass-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.pkg-card.hot {
+  border-color: rgba(52, 199, 89, 0.4);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(52,199,89,0.03) 100%);
+}
+.pkg-top {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+.pkg-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+.badge-hot { background: var(--sf-orange); color: #fff; }
+.badge-std { background: rgba(255,255,255,0.1); color: var(--accent-gold); }
+
+.pkg-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.pkg-price { font-size: 1.8rem; font-weight: 700; color: var(--accent-gold); }
+.pkg-price small { font-size: 13px; color: var(--text-muted); font-weight: 400; }
+
+.pkg-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.pkg-feat { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.feat-check { color: var(--ios-green); font-size: 14px; }
+
+.pkg-prefill {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 8px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-top: auto;
+  margin-bottom: 0.75rem;
+}
+.pkg-wa {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid var(--glass-border);
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.pkg-card.hot .pkg-wa {
+  background: var(--ios-green);
+  border: none;
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3);
+}
+
+/* HOTELS GRID */
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+.hotel-card {
+  background: var(--glass-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.hotel-tier {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 1.25rem 1.25rem 0.5rem;
+  align-self: flex-start;
+}
+.tier-budget { background: rgba(52, 199, 89, 0.2); color: #34C759; }
+.tier-family { background: rgba(255, 213, 128, 0.2); color: var(--accent-gold); }
+.tier-premium { background: rgba(255, 69, 58, 0.2); color: #FF453A; }
+
+.hotel-name { font-size: 15px; font-weight: 700; color: #fff; padding: 0 1.25rem; margin-bottom: 4px; }
+.hotel-price { font-size: 1.3rem; font-weight: 700; color: var(--accent-gold); padding: 0 1.25rem; margin-bottom: 0.75rem; }
+.hotel-price small { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+.hotel-feats { font-size: 12px; color: var(--text-muted); line-height: 1.6; padding: 0 1.25rem; margin-bottom: 1.25rem; flex: 1; }
+.hotel-prefill {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0 1.25rem 0.75rem;
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+.hotel-wa {
+  width: calc(100% - 2.5rem);
+  margin: 0 1.25rem 1.25rem;
+  background: var(--ios-green);
+  color: #fff;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* REVIEWS */
+.rev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+.rev-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+.rev-stars { color: #FFD700; font-size: 14px; margin-bottom: 8px; }
+.rev-text { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem; font-style: italic; }
+.rev-author { display: flex; align-items: center; gap: 10px; }
+.rev-av { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--accent-gold); }
+.rev-name { font-size: 13px; font-weight: 600; color: #fff; }
+.rev-city { font-size: 11px; color: var(--text-muted); }
+
+/* MODERN GLASS GALLERY SECTION */
+.gal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+.gal-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 150px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-card);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.gal-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.gal-item:hover img {
+  transform: scale(1.08);
+}
+.gal-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(15, 18, 37, 0.95));
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+
+/* FINAL CTA */
+.final-cta {
+  background: linear-gradient(rgba(15, 18, 37, 0.85), rgba(15, 18, 37, 0.95)), 
+              url('https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--glass-border);
+}
+.final-cta h2 { font-family: 'Tiro Telugu', serif; color: #fff; font-size: 2.2rem; margin-bottom: 0.75rem; }
+.final-cta p { color: var(--text-muted); font-size: 1rem; margin-bottom: 3rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+.final-wa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.final-wa-card {
+  background: var(--glass-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.final-wa-label { font-size: 13px; color: #fff; font-weight: 500; margin-bottom: 10px; }
+.final-wa-btn { width: 100%; background: var(--ios-green); color: #fff; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 600; border: none; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+.final-wa-msg { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: 8px; text-align: left; }
+
+footer {
+  background: #090c15;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-logo { font-family: 'Tiro Telugu', serif; color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 6px; }
+.footer-sub { color: rgba(255,255,255,0.3); font-size: 12px; }
+
+/* 
+=====================================================
+  RESPONSIVE MEDIA QUERIES FOR PADDING & ALIGNMENT
+=====================================================
+*/
+@media (max-width: 600px) {
+  /* Optimized small background image size for ultra-fast mobile loading */
+  /* .hero {
+    padding: 3.5rem 1.25rem 3rem;
+    background: linear-gradient(rgba(15, 18, 37, 0.75), rgba(15, 18, 37, 0.85)), 
+                url('https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=600&q=80') no-repeat center center/cover;
+  } */
+
+  .hero {
+    padding: 3.5rem 1.25rem 3rem;
+
+    background:
+    linear-gradient(
+        rgba(15, 18, 37, 0.75),
+        rgba(15, 18, 37, 0.85)
+    ),
+    url('assets/img/puri-beach-view.webp');
+
+    background-repeat: no-repeat;
+    background-position: center center;
+        /* background-position: 72% center; */
+
+    background-size: cover;
+    /* min-height: 100svh; */
+
+    /* min-height: 100vh; */
+}
+  
+  /* Compact container for mobile screens */
+  .hero-wa-box {
+    padding: 1.5rem 1.15rem;
+    border-radius: 20px;
+  }
+  
+  /* Perfectly aligned & scaled button for mobile text-wrap */
+  .wa-main-btn {
+    font-size: 15px;
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  
+  .sec {
+    padding: 3rem 1.25rem;
+  }
+  .svc-grid {
+    padding: 0 0.25rem;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 400px) {
+  nav {
+    padding: 0 0.75rem;
+  }
+  .nav-logo {
+    font-size: 1.05rem;
+  }
+  .nav-logo small {
+    font-size: 9px;
+  }
+  .nav-wa {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .nav-logo {
+    font-size: 0.95rem;
+  }
+  .nav-wa {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
